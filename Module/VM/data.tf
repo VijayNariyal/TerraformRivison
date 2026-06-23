@@ -11,7 +11,12 @@ data "azurerm_key_vault" "tf-kv" {
 
 data "azurerm_key_vault_secret" "tf-kvsecret" {
   for_each = var.vms
-  name         = each.value.secret_name
+  name         = each.value.secret_name1
   key_vault_id = data.azurerm_key_vault.tf-kv[each.key].id
 }
 
+data "azurerm_key_vault_secret" "tf-kvsecret2" {
+  for_each = var.vms
+  name         = each.value.secret_name2
+  key_vault_id = data.azurerm_key_vault.tf-kv[each.key].id
+}

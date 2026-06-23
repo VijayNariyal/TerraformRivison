@@ -16,11 +16,11 @@ resource "azurerm_key_vault" "tf-kv" {
     object_id = data.azurerm_client_config.current.object_id
 
     key_permissions = [
-      "Get",
+      "Get", "Delete", "List"
     ]
 
     secret_permissions = [
-      "Get",
+      "Get", "Set", "Delete", "List"
     ]
 
     storage_permissions = [
