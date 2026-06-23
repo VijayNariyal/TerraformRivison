@@ -14,7 +14,7 @@ crash.*.log
 *.plan
 
 # Variable files containing secrets
-*.tfvars
+# *.tfvars
 *.tfvars.json
 
 # Override files
