@@ -20,7 +20,7 @@ resource "azurerm_key_vault" "tf-kv" {
     ]
 
     secret_permissions = [
-      "Get", "Set", "Delete", "List"
+      "Get", "Set", "Delete", "List", "Recover", "Purge"
     ]
 
     storage_permissions = [
