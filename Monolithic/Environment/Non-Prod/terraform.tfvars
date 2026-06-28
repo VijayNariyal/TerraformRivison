@@ -15,6 +15,11 @@ vnet = {
     address_space = ["10.0.0.0/16"]
     dns_server    = ["8.8.8.8"]
   }
+    "np-appvnet" = {
+    tags          = "non-prod-vnet"
+    address_space = ["10.1.0.0/16"]
+    dns_server    = ["8.8.8.8"]
+  }
 }
 
 subnet = {
@@ -31,7 +36,7 @@ subnet = {
     address_prefix = ["10.0.224.0/24"]
   }
   subnet3 = {
-    vnet_name      = "np-tfvnet"
+    vnet_name      = "np-appvnet"
     subnet_name    = "np-appsubnet"
     rg_name        = "np-terraform-rg"
     address_prefix = ["10.0.2.0/24"]
@@ -53,7 +58,7 @@ nicc = {
   nicc2 = {
     nic_name    = "np-tfnic2"
     subnet_name = "np-appsubnet"
-    vnet_name   = "np-tfvnet"
+    vnet_name   = "np-appvnet"
     ip_configuration = {
       ip_config1 = {
         ip_name            = "internal"
@@ -76,7 +81,7 @@ nsg = {
     location    = "central india"
     rg_name     = "np-terraform-rg"
     subnet_name = "np-appsubnet"
-    vnet_name   = "np-tfvnet"
+    vnet_name   = "np-appvnet"
   }
 }
 
@@ -157,5 +162,26 @@ lb = {
     lbprobe_name          = "public_lb_probe"
     nic_name              = "np-tfnic"
     ip_configuration_name = "internal"
+  }
+}
+
+nats = {
+  nat1 = {
+     nat_name = "np_nat_gateway"
+      sku_name = "Standard"
+      pip_name = "np-nat_pip"
+      subnet_name = "np-tfsubnet"
+      vnet_name = "np-tfvnet"
+    
+  }
+}
+
+perrings = {
+  "perring1" = {
+    vnet_peeriing_name1  = "peer1to2"
+    vnet_peeriing_name2  =  "peer2to1"
+    virtual_network_name1 = "np-tfvnet"
+    virtual_network_name2 = "np-app_vnet"
+
   }
 }

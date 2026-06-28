@@ -64,3 +64,22 @@ module "lb" {
   location = var.location
   depends_on = [ module.pip, module.nic]
 }
+
+
+module "nat" {
+  source     = "../../Module/NAT"
+  nat        = var.nats
+  rg_name    = var.rg_name
+  location   = var.location
+  depends_on = [module.pip, module.subnet]
+
+}
+
+module "perring" {
+  source = "../../Module/vnet_perring"
+  perring = var.perrings
+  depends_on = [ module.vnet ]
+  rg_name    = var.rg_name
+  location   = var.location
+  
+}

@@ -126,3 +126,26 @@ variable "lb" {
     ip_configuration_name = string
   }))
 }
+
+variable "nats" {
+    description = "Variable of NAT Gate"
+    type = map(object({
+      nat_name = string
+      sku_name = string
+      pip_name = string
+      subnet_name = string
+      vnet_name = string
+    }))
+}
+
+variable "perrings" {
+  description = "Vnet_perring"
+  type = map(object({
+    vnet_peeriing_name1  = string
+    vnet_peeriing_name2  = string
+    virtual_network_name1 = string
+    virtual_network_name2 = string
+
+  }))
+
+}
